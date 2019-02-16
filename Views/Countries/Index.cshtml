@@ -1,0 +1,21 @@
+@model Ballerz.Models.Countries.CountriesIndexModel
+
+<div class="container-fluid" style=" background-color: #4f4e4e">
+<div class="row">
+@foreach(var country in Model.CountriesList)
+{
+    <div class="col-md-3 text-center" style="margin-bottom: 3em; border-bottom: 1px solid white;" >
+  <img src="@country.FlagUrl" class="flagImg" style="width: 70%; height: 125px; padding-top: 20px;" />
+  
+  <h2 style="padding-bottom: 20px; color: white"><strong>@country.Name</strong></h2>
+  <a style="color: white" class="btn btn-small">@country.Name National Team</a> <br />
+  <a style="color: white" asp-controller="Leagues" asp-action="CountryLeagues" asp-route-id="@country.Id" class="btn btn-small">Leagues in @country.Name</a>
+  <a style="color: white" asp-controller="Managers" asp-action="CountryManagers" asp-route-id="@country.Id" class="btn btn-small">Managers from @country.Name</a>
+  <a style="color: white" asp-controller="Stadiums" asp-action="CountryStadiums" asp-route-id="@country.Id" class="btn btn-small">Stadiums in @country.Name</a>
+  
+  </div>
+  
+  
+}
+</div>
+</div>

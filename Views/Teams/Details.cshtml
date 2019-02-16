@@ -1,0 +1,39 @@
+@model Ballerz.Models.Teams.TeamDetailModel
+
+<div class="container-fluid" style="background-color: #4f4e4e;">
+
+<div class="row" style="background-color: #4f4e4e;">
+    <div class="col-md-2 text-center">
+@if(Model.Teams.TeamBadgeUrl != null)
+{
+    <img  src="@Model.Teams.TeamBadgeUrl" style="width: 100%;" />
+    
+}
+<h4>Fan Count: @Model.Fans</h4>
+</div>
+<div class="col-md-5">
+    
+<h1 style="font-family: 'Oswald', sans-serif;">@Model.Teams.TeamName</h1>
+<h2 style="font-style: italic;">" @Model.Teams.Nickname " </h2>
+<h2>Founded: @Model.Teams.YearFounded</h2>
+<h2>@Model.Stadiums.StadiumName</h2>
+   
+   <h3>@Model.Stadiums.Address1</h3>
+  <h3>@Model.Stadiums.Address2</h3>
+  <h3>@Model.Stadiums.PostCode</h3>
+<h4>Capacity: @Model.Stadiums.Capacity</h4>
+<a asp-controller="ClubHistory" asp-action="TeamHistory" asp-route-id="@Model.Teams.Id">@Model.Teams.TeamName's History</a>
+<a asp-controller="Players" asp-action="PlayerTeam" asp-route-id="@Model.Teams.Id">View @Model.Teams.TeamName's Squad</a>
+</div>
+<div class="col-md-5">
+    
+    <img class="img img-circle" src="@Model.Stadiums.ImageUrl1" style="width: 90%; padding: 20px;" />
+    <h3>Managed By:</h3>
+    <h4 > <img class="img img-circle" src="@Model.Managers.ManagerImageUrl" style="width: 80px; border: 2px solid white;" />&nbsp;&nbsp; @Model.Managers.ManagerName </h4>
+    <h5>DoB: @Model.Managers.DoB.ToShortDateString()</h5>
+    <h4>From: @Model.Managers.BirthPlace &nbsp; <img src="@Model.ManagerCountryUrl" style="width: 40px;" /></h4>
+</div>
+
+</div>
+
+</div>

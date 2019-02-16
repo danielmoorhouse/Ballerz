@@ -1,0 +1,18 @@
+@model Ballerz.Models.Season.SeasonIndexModel
+
+<div class="container-fluid" style="background-color: lightgrey;">
+<div class="row">
+@foreach(var season in Model.SeasonList)
+{
+    <div class="col-md-3 text-center" style="margin-bottom: 3em; border-bottom: 3px solid blue;" >
+  
+  
+  <h4 style="padding-bottom: 20px;">@season.Season</h4>
+
+  
+  </div>
+  
+  
+}
+</div>
+</div>

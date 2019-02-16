@@ -1,0 +1,21 @@
+@model Ballerz.Models.Teams.TeamIndexModel
+
+
+<div class="row">
+@foreach(var team in Model.TeamList)
+{
+    <div class="col-md-3 text-center" style="margin-bottom: 10px; ">
+        <div style="width: 100%; height: 190px;">
+    <img src="@team.TeamBadgeUrl" style="width: 150px; bottom: 0;" />
+ </div>
+ <br/>
+ <h5><strong>@team.TeamName</strong></h5>
+ 
+ <h4>@team.Nickname</h4>
+ 
+ <h5>Founded:  @team.YearFounded</h5>
+ 
+
+ </div>
+}
+</div>

@@ -1,0 +1,20 @@
+@model Ballerz.Models.Leagues.LeagueIndexModel
+
+<a asp-controller="Leagues" asp-action="Create">Add League</a>
+<div class="container-fluid" style="background-color: lightgrey;">
+<div class="row" style=" background-color: #4f4e4e; ">
+@foreach(var league in Model.LeagueList)
+{
+    <div class="col-md-3 text-center" style="margin-bottom: 3em;">
+  <img src="@league.LeagueImageUrl" class="flagImg" style="width: 170px; height: 160px; padding-top: 20px;"/>
+  <h2 style="padding-bottom: 10px;"><strong>@league.LeagueName</strong></h2>
+ 
+  <h4>@league.CountryName</h4>
+  <a asp-controller="Teams" asp-action="LeagueTeams" asp-route-id="@league.Id" class="btn btn-small">@league.LeagueName Teams</a>
+  
+  
+  </div>
+  
+}
+</div>
+</div>

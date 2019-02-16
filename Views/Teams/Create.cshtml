@@ -1,0 +1,48 @@
+@model Ballerz.Models.Teams.AddTeamModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Add Team
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createManagerSection">
+            <form asp-action="AddTeam" method="post" id="createLeagueForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="TeamName" class="form-control" placeholder="Team Name"/>
+                    <span asp-validation-for="TeamName" class="text-danger"></span>
+                </div>
+                   <div class="form-group">
+                   
+                    <input asp-for="Nickname" class="form-control" placeholder="Nickname"/>
+                    <span asp-validation-for="Nickname" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                   
+                    <input asp-for="YearFounded" class="form-control" placeholder="Year Founded"/>
+                    <span asp-validation-for="YearFounded" class="text-danger"></span>
+                </div>
+               
+                      <div class="col-md-10">
+                        <label>Competes In </label>&nbsp;<select asp-for="LeagueId" asp-items="@Model.LeagueList"></select>
+                    </div>
+                  
+                      <div id="upload">
+                    <label style="">Upload Team Badge</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="ImageT1" typeof="file" style="display: none">
+                    </label>
+                </div>
+             
+               
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add League</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

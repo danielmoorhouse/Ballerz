@@ -1,0 +1,112 @@
+﻿@model Ballerz.Models.Forum.ForumTopicModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            <img src="@Model.Forum.ImageUrl" style="width: 170px;" />
+            <h3><strong>@Model.Forum.Name Forum</strong></h3>
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                <span id="headingBtn">
+                    <a asp-controller="Post"
+                       asp-action="Create"
+                       asp-route-id="@Model.Forum.Id" class="btn btn-newPost">
+                        Create Post
+                    </a>
+                </span>
+            }
+            <form asp-controller="Forum" asp-action="Search" method="post">
+                <div class="searchForm">
+                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
+                    <button type="submit" class="btn btn-forumSearch">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+                <input asp-for="Forum.Id" name="id" type="hidden" />
+            </form>
+        </div>
+        <div class="sectionDescription">
+            <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl)"></div>
+            <p>Welcome to the @Model.Forum.Name forum. Please keep posts friendly and on-topic.</p>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <p>
+                    <span>You must be a 
+                        <a asp-controller="Account" asp-action="Register">
+                            registered member
+                        </a>
+                    to create a new post.</span>
+                </p>
+            }
+        </div>
+    </div>
+   <div class="row">
+                            <div class="col-md-1">
+                            <h5></h5>
+                            </div>
+                            <div class="col-md-2 text-center">
+                             <h5><strong>Author</strong></h5>
+                            </div>
+                            <div class="col-md-3 text-center">
+                             <h5><strong>Post Topic</strong></h5>
+                            </div>
+                            <div class="col-md-4 text-center">
+                            <h5><strong>Replies</strong></h5>
+                            </div>
+                              <div class="col-md-4">
+                                
+                            </div>
+                        </div>
+        @if (Model.Posts.Any())
+        {
+            
+                    @foreach(var post in Model.Posts)
+                    {
+                        <div class="row">
+                            <div class="col-md-1">
+                            <img class="img img-circle" src="@post.AuthorImageUrl" style="width: 50px; float: right;" />
+                            </div>
+                            <div class="col-md-2 text-center">
+                             @post.AuthorName (@post.AuthorRating)
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                @post.RepliesCount
+                            </div>
+                              <div class="col-md-4">
+                                
+                            </div>
+                        </div>
+                       
+                            
+                         
+                    }
+             
+        }
+        else
+        {
+            <div class="noPosts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>
+                    It looks like there are no posts to be found.
+                    Why not 
+                    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
+                        <span>Post</span>
+                    </a>
+                    Something?
+                </h3>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+        function clearThis(target) {
+            target.value = "";
+
+        }
+    </script>
+}

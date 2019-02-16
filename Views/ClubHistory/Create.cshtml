@@ -1,0 +1,41 @@
+@model Ballerz.Models.ClubHistory.AddClubHistoryModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Create New Forum
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createForumSection">
+            <form asp-action="AddClubHistory" method="post" id="createSeasonForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                  <div class="col-md-10">
+                        <label>Club: </label>&nbsp;<select asp-for="TeamId" asp-items="@Model.TeamList"></select>
+                    </div>
+                  <div class="col-md-10">
+                        <label>Season </label>&nbsp;<select asp-for="Season" asp-items="@Model.SeasonList"></select>
+                    </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+               <div class="col-md-10">
+                        <label>League Competed In </label>&nbsp;<select asp-for="LeagueName" asp-items="@Model.LeagueList"></select>
+                    </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="Position" class="form-control" placeholder="League Position"/>
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                   
+                    <input asp-for="Points" class="form-control" placeholder="Points"/>
+                    <span asp-validation-for="Points" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add Club History</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

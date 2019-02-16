@@ -1,0 +1,32 @@
+@model Ballerz.Models.Player.PlayerIndexModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var player in Model.PlayerList) 
+{
+    <div class="col-md-3 text-center">
+        <img src="@player.PlayerImageUrl" style="width: 150px" /><br/>
+   <h4><strong>@player.PlayerName</strong></h4> 
+   
+   <h5><strong>@player.Birthplace</strong></h5> 
+
+    <a asp-controller="Players" asp-action="Details" asp-route-id="@player.Id">More Details</a>
+    <a asp-controller="Players" asp-action="Delete" asp-route-id="@player.Id">Delete</a>
+    </div>
+}
+    </tbody>
+</table>

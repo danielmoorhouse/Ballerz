@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Ballerz.Models.Profile.ProfileDetailModel
+@inject RoleManager<Ballerz.Data.Models.ApplicationRole> RoleManager
+@inject UserManager<Ballerz.Data.Models.ApplicationUser> UserManager
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+           <h3>User Profile</h3> 
+        </div>
+    </div>
+    <div class="row userProfile" style="background-color: #4f4e4e;" >
+        <div class="col-md-4 text-center">
+            <img class="img img-circle" src="@Model.ProfileImageUrl" style="width: 60%; padding-top: 15px; border: " />
+       
+        </div>
+        <div class="col-md-8">
+            <h1><strong>@Model.FirstName @Model.LastName </strong> &nbsp;<img src="@Model.CountryFlagUrl" style="width: 50px;" /></h1>
+           
+            <h2> @@ @Model.UserName</h2>
+             @if (@Model.IsAdmin)
+            {
+                <span style="color: #ffdaa0; background-color: #1f243d; padding: 5px;"><strong>Administrator</strong></span>
+            }
+            <h3>Supports: <strong> @Model.TeamName </strong> <img src="@Model.TeamBadgeUrl" style="width: 50px;" /></h3>
+            
+            <h4><img src="/images/icons/location_558775.png" style="width: 25px;" /> <strong> @Model.Location, @Model.CountryName</strong></h4>
+            <h5><strong>Joined: @Model.MemberSince.ToShortDateString()</strong></h5>
+        </div>
+    </div>
+</div>
+<hr/>

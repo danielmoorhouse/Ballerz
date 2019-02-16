@@ -1,0 +1,28 @@
+@model Ballerz.Models.Teams.TeamIndexModel
+
+<a asp-controller="Teams" asp-action="Create">Add Team</a>
+<div class="container-fluid" style="background-color: lightgrey;">
+<div class="row" style="background-color: #4f4e4e;">
+@foreach(var team in Model.TeamList)
+{
+       <div class="col-md-3 text-center">
+    <img src="@team.TeamBadgeUrl" style="width: 160px; height: 170px; padding: 10px;" />
+ 
+ <br/>
+ <h4><strong>@team.TeamName</strong></h4>
+ 
+ <h4>@team.Nickname</h4>
+ 
+ <h5>Founded:  @team.YearFounded</h5>
+
+ <a asp-controller="Teams" asp-action="Details" asp-route-id="@team.Id" class="btn btn-small">More Details on @team.TeamName</a>
+  
+ 
+ 
+  
+  
+  </div>
+  
+}
+</div>
+</div>

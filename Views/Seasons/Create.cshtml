@@ -1,0 +1,26 @@
+@model Ballerz.Models.Season.AddSeasonModel
+
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Create New Forum
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createForumSection">
+            <form asp-action="AddSeason" method="post" id="createSeasonForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="Season" class="form-control" placeholder="Season"/>
+                    <span asp-validation-for="Season" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add Season</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

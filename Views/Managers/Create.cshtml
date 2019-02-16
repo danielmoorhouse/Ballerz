@@ -1,0 +1,44 @@
+@model Ballerz.Models.Managers.AddManagerModel
+
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Add Manager
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createManagerSection">
+            <form asp-action="AddManager" method="post" id="createManagerForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="Name" class="form-control" placeholder="Manager Name"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                   
+                    <input asp-for="DoB" class="form-control" placeholder="Date of Birth"/>
+                    <span asp-validation-for="DoB" class="text-danger"></span>
+                </div>
+              <div class="col-md-10">
+                        <label>Country From </label>&nbsp;<select asp-for="CountryId" asp-items="@Model.CountryList"></select>
+                       <input asp-for="BirthPlace" class="form-control" placeholder="Birthplace" />
+                    </div>
+                 <div class="col-md-10">
+                        <label>Current Team </label>&nbsp;<select asp-for="TeamId" asp-items="@Model.TeamList"></select>
+                    </div>
+                <div id="upload">
+                    <label style="">Upload Manager Image</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="ImageUpload" typeof="file" style="display: none">
+                    </label>
+                </div>
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add Manager</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

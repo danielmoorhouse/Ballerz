@@ -1,0 +1,60 @@
+@model Ballerz.Models.Player.AddPlayerModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>AddPlayerModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form  asp-action="AddPlayer" method="post" id="createPlayerForm" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       
+            <div class="form-group">
+                <label asp-for="PlayerName" class="control-label"></label>
+                <input asp-for="PlayerName" class="form-control" />
+                <span asp-validation-for="PlayerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthplace" class="control-label"></label>
+                <input asp-for="Birthplace" class="form-control" />
+                <span asp-validation-for="Birthplace" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="DoB" class="control-label"></label>
+                <input asp-for="DoB" class="form-control" />
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+                <div class="col-md-10">
+                        <label>Country From </label>&nbsp;<select asp-for="CountryId" asp-items="@Model.CountryList"></select>
+                    </div>
+           <div class="col-md-10">
+                        <label>Current Team </label>&nbsp;<select asp-for="TeamId" asp-items="@Model.TeamList">
+                            <option>-Select-</option>
+                        </select>
+                    </div>
+                         <div class="col-md-10">
+                        <label>Position </label>&nbsp;<select asp-for="PositionId" asp-items="@Model.PositionList"></select>
+                    </div>
+            <div id="upload">
+                    <label style="">Upload Player Image</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="ImageUpload" typeof="file" style="display: none">
+                    </label>
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

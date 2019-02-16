@@ -1,0 +1,68 @@
+@model Ballerz.Models.Stadiums.AddStadiumModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Add Stadium
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createManagerSection">
+            <form asp-action="AddStadium" method="post" id="createStadiumForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="StadiumName" class="form-control" placeholder="Stadium Name"/>
+                    <span asp-validation-for="StadiumName" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                   
+                    <input asp-for="BuiltIn" class="form-control" placeholder="Date Built"/>
+                    <span asp-validation-for="BuiltIn" class="text-danger"></span>
+                </div>
+                   <div class="form-group">
+                   
+                    <input asp-for="Capacity" class="form-control" placeholder="Stadium Capacity"/>
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                   
+                    <div class="col-md-10">
+                        <label>Resides In </label>&nbsp;<select asp-for="CountryId" asp-items="@Model.CountryList"></select>
+                    </div>
+                </div>
+                 <div class="col-md-10">
+                        <label>Home Team</label>&nbsp;<select asp-for="TeamId" asp-items="@Model.TeamList"></select>
+                    </div>
+                </div>
+                 <div class="form-group">
+                   
+                    <input asp-for="Address1" class="form-control" placeholder="Address Line 1"/>
+                    <span asp-validation-for="Address1" class="text-danger"></span>
+                </div>
+                   <div class="form-group">
+                   
+                    <input asp-for="Address2" class="form-control" placeholder="Address Line 2"/>
+                    <span asp-validation-for="Address2" class="text-danger"></span>
+                </div>
+                   <div class="form-group">
+                   
+                    <input asp-for="PostCode" class="form-control" placeholder="Post Code"/>
+                    <span asp-validation-for="PostCode" class="text-danger"></span>
+                </div>
+                 <div id="upload">
+                    <label style="">Upload Stadium Image 1</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="ImageS1" typeof="file" style="display: none">
+                    </label>
+                </div>
+                
+               
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add Stadium</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div> 

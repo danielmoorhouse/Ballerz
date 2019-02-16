@@ -1,0 +1,25 @@
+@model Ballerz.Models.Player.PlayerIndexModel
+<style>
+    h4, h5 {
+        color: white;
+    }
+</style>
+<h1 style="margin-bottom: 50px;">Ballerz | Squads</h1>
+<div class="row" style="background-color: darkgrey;">
+    
+@foreach (var player in Model.PlayerList) 
+{
+    <div class="col-md-3 text-center">
+        <img src="@player.PlayerImageUrl" style="width: 150px" /><br/>
+   <h4><strong>@player.PlayerName</strong></h4> 
+   <img src="@player.FlagUrl" style="width: 30px" /><br/>
+   
+   <h5><strong>@player.DoB.ToShortDateString()</strong></h5> 
+   <h5><strong>@player.TeamName</strong></h5> 
+   <h5><strong>@player.Position</strong></h5> 
+
+@player.CountryName
+    <a class="btn btn-default" asp-controller="Players" asp-action="Details" asp-route-id="@player.Id">More Details</a>
+    </div>
+}
+</div>

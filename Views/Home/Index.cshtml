@@ -1,0 +1,102 @@
+﻿@model Ballerz.Models.Home.HomeIndexModel
+
+<div class="container body-content">
+    <div class="row frontPageSplash">
+        <div class="col-md-6 frontPageLearn">
+            <div class="frontPageHeading"></div>
+            <p class="frontPageSubHeading">Ballerz</p>
+            <div>
+                <form asp-controller="Search" asp-action="Search" method="post">
+                    <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..."/>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+  
+        <h3 style="color: white;"><strong>Latest Posts</strong></h3>
+         <div class="col-md-10">
+                 <div class="row" style=" background-color: #4f4e4e; border-right: 2px solid white; padding-bottom: 10px; border-bottom: 1px solid white;">
+                        <div class="col-md-1 text-center">
+                          
+                        </div>
+                        <div class="col-md-3" style="">
+                              
+                                
+                                  <h4 id="Title1" style="padding-top: 15px;">&nbsp;Post Title</h4> 
+                                
+                        </div>
+                        <div class="col-md-2 text-center">
+                        
+                          <h4 id="uName" style="padding-top: 15px;">Post Author</h4>  
+                           
+                        </div>
+
+            
+                       <div class="col-md-4 text-center">
+                           <h4 style="color: white; padding-top: 15px;"> Forum </h4>
+                        </div>
+
+            
+                      <div class="col-md-2 text-center">
+                            
+                                     <h4 style="color: white; padding-top: 15px;">Replies</p>
+                                
+                                   
+                        </div>
+
+                    </div>
+                @foreach(var post in Model.LatestPosts)
+                {
+                    <div class="row" style=" background-color: #4f4e4e; border-right: 2px solid white; padding-bottom: 10px; border-bottom: 1px solid white;">
+                        <div class="col-md-1 text-center">
+                            <img src="@post.Forum.ImageUrl" style="width: 100%;  padding-top: 10px;" /> 
+                        </div>
+                        <div class="col-md-3">
+                              <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                
+                                  <h5 id="Title" style="padding-top: 10px;">&nbsp;@post.Title </h5> 
+                                </a>
+                        </div>
+                        <div class="col-md-2 text-center">
+                        <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId"><p style="color: yellow;  padding: 5px;"> 
+                          <h5 id="uName">@post.AuthorName</h5>  
+                            </a> 
+                        </div>
+
+            
+                       <div class="col-md-4 text-center">
+                           <p style="color: white; padding: 15px;"> @post.Forum.Name </p>
+                        </div>
+
+            
+                      <div class="col-md-2 text-center">
+                              @if(post.RepliesCount == 1)
+                                {
+                                    <p style="color: white; padding-top: 10px;">@post.RepliesCount Reply</p>
+                                }
+                                @if(post.RepliesCount == 0)
+                                {
+                                    <p style="color: white; padding-top: 10px;">No Replies</p>
+                                }
+                                else
+                                {
+                                     <p style="color: white; padding-top: 10px;">@post.RepliesCount Replies</p>
+                                }
+                                   
+                        </div>
+
+                    </div>
+                }
+                </div>
+                <div class="col-md-2" style="border-left: 1px solid grey; background-color: #4f4e4e;">
+                    <h4 style="color: white;"><strong>New Members</strong></h4>
+                @foreach(var user in Model.Profile)
+                {
+                <img class="img img-circle" src="@user.ProfileImageUrl" style="width: 50px; padding-right: 10px;" /> <img src="@user.FlagUrl" style="width: 40px; padding-right: 10px;" />
+                  <img src="@user.TeamBadge" style="width: 30px;" />  
+                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@user.UserId"><p style="color: white;"><strong>@user.UserName</strong></p></a>
+                <p style="color: white;">@user.Location</p>
+                <p style="color: white; font-size: 10px;">@user.MemberSince</p><hr/>
+                }
+               </div>

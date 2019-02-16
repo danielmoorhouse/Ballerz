@@ -1,0 +1,71 @@
+@model Ballerz.Models.Profile.AddProfileModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>AddProfileModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddProfile" method="post" id="createProfileForm" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+            <div class="form-group">
+                
+                <input type="hidden" asp-for="UserName" value="@User.Identity.Name" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        <div id="upload">
+                    <label style="">Upload Manager Image</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="ImageUpload" typeof="file" style="display: none">
+                    </label>
+                </div>
+              <div class="col-md-10">
+                        <label>I Support </label>&nbsp;<select asp-for="TeamId" asp-items="@Model.TeamList">
+                            <option>-select-</option>
+                        </select>
+                    </div>
+          
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="col-md-10">
+                        <label>Country From </label>&nbsp;<select asp-for="CountryId" asp-items="@Model.CountryList">
+                            <option>-select-</option>
+                        </select>
+                       
+                    </div>
+          
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

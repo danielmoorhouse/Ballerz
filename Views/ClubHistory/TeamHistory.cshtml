@@ -1,0 +1,45 @@
+@model Ballerz.Models.ClubHistory.ClubHistoryIndexModel
+
+
+    <div class="row">
+        <hr/>
+        <div class="col-md-2">
+            <h5><strong>Season</strong></h5>
+
+ </div>
+ <div class="col-md-3">
+     <h5><strong>League</strong></h5>
+
+ </div>
+ <div class="col-md-2">
+     <h5><strong>Position</strong></h5>
+ 
+ </div>
+ <div class="col-md-2">
+     <h5><strong>Points</strong> </h5>
+     
+ 
+ </div>
+    </div>
+    
+@foreach(var item in Model.HistoryList)
+{
+    <div class="row" style="margin-bottom: 7px;">
+        <div class="col-md-2">
+            
+ @item.Season
+ </div>
+ <div class="col-md-3">
+    
+ @item.LeagueName
+ </div>
+ <div class="col-md-2">
+     
+ @item.Position
+ </div>
+ <div class="col-md-2">
+     
+ @item.Points
+ </div>
+    </div>
+}

@@ -1,0 +1,20 @@
+@model Ballerz.Models.Managers.ManagersIndexModel
+
+<div class="container-fluid" style="background-color: #4f4e4e;">
+<div class="row">
+@foreach(var manager in Model.ManagersList)
+{
+    <div class="col-md-4 text-center" style="margin-bottom: 3em; border-right: 2px solid white;">
+  <img src="@manager.ManagerImageUrl" class="flagImg" style="width: 70%; height: 160px; padding-top: 20px;"/>
+  <h4 style="padding-bottom: 5px;"><strong>@manager.Name</strong></h4>
+  <img src="@manager.CountryFlagUrl" class="flagImg" style="width: 40px;"/>
+  
+  <h5><strong>@manager.TeamName</strong></h5>
+  <a asp-controller="Managers" asp-action="Details" asp-route-id="@manager.Id" class="btn btn-small">More Details</a>
+  
+  
+  </div>
+  
+}
+</div>
+</div>

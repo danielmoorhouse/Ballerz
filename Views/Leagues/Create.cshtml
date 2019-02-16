@@ -1,0 +1,35 @@
+@model Ballerz.Models.Leagues.AddLeagueModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Add Stadium
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4 text-center" style="">
+        <div id="createManagerSection">
+            <form asp-action="AddLeague" method="post" id="createLeagueForm" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                   
+                    <input asp-for="LeagueName" class="form-control" placeholder="Stadium Name"/>
+                    <span asp-validation-for="LeagueName" class="text-danger"></span>
+                </div>
+                <div class="col-md-10">
+                        <label>Played In </label>&nbsp;<select asp-for="CountryId" asp-items="@Model.CountryList"></select>
+                    </div>
+                      <div id="upload">
+                    <label style="">Upload League Image</label>
+                    <br />
+                    <label class="btn btn-default btn-file">
+                        Browse <input asp-for="LeagueImage" typeof="file" style="display: none">
+                    </label>
+                </div>
+               
+                <button type="submit" id="newFormBtn" class="btn btn-submitPost" style="margin-top: 20px;">Add League</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

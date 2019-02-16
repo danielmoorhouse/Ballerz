@@ -1,0 +1,18 @@
+@model Ballerz.Models.Stadiums.StadiumIndexModel
+
+<div class="container-fluid" style="background-color: lightgrey;">
+<div class="row">
+@foreach(var stadium in Model.StadiumList)
+{
+    <div class="col-md-3 text-center" style="margin-bottom: 3em;">
+       <img src="@stadium.ImageUrl1" class="flagImg" style="width: 70%; height: 150px; padding-top: 20px;"/>
+         <h4 style="padding-bottom: 10px;"><strong>@stadium.StadiumName</strong></h4>
+        <img src="@stadium.CountryFlagUrl" class="flagImg" style="width: 40px;"/>
+ 
+            <h4>Capacity: @stadium.Capacity</h4>
+             <h4><strong>@stadium.TeamName</strong></h4>
+    </div>
+  
+}
+</div>
+</div>
