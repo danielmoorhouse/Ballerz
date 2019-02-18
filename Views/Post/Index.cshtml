@@ -36,6 +36,8 @@
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
                 </a>
+                @Model.Likes.ToString() Likes <br/>
+                <a asp-controller="Post" asp-action="Like" asp-route-id="@Model.Id">Like</a>
             </span>
         </div>
     }
@@ -45,7 +47,7 @@
         foreach (var reply in Model.Replies)
         {
             <div class="row replyContent" style="margin-top: 60px;">
-                <div class="col-md-3 replyAuthorContainer col-md-offset-2" style="marging-top: 50px;">
+                <div class="col-md-3 replyAuthorContainer col-md-offset-2" style="margin-top: 50px;">
                    <img class="img img-circle" src="@reply.AuthorImageUrl" style="width: 40px;" />
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         @reply.AuthorName
@@ -57,11 +59,11 @@
                     }
                     <span class="postDate">@reply.Created</span>
                 </div>
-                <dv class="col-md-7 replyContentContainer">
+                <div class="col-md-7 replyContentContainer">
                     <div class="postContent">
                         @Html.Raw(reply.ReplyContent)
                     </div>
-                </dv>
+                </div>
             </div>
         }
     }

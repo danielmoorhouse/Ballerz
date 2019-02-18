@@ -116,7 +116,7 @@ namespace Ballerz.Web.Controllers
               var players = (from p in _db.Players
                             .Where(p => p.TeamId == id)
                             join c in _db.Countries on p.CountryId equals c.Id
-                            select new { p.Id, p.PlayerName, p.PlayerImageUrl, p.DoB, c.FlagUrl})                
+                            select new { p.Id, p.PlayerName, p.PlayerImageUrl, p.DoB, c.FlagUrl});                
                      
 
            
@@ -128,7 +128,7 @@ namespace Ballerz.Web.Controllers
             teamdet.CountryId = managerCountry.Id;
             teamdet.Stadiums = stadium;
             teamdet.Fans = fans.Count(p => p.TeamId == teams.Id);
-            teamdet.Players = players;
+            //teamdet.Players = players;
             //teamdet.Players = players;
             //teamdet.Position = playerPosition.Position;
             

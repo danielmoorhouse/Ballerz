@@ -15,13 +15,14 @@ namespace Ballerz.Controllers
 {
     public class PostController : Controller
     {
+        private readonly ApplicationDbContext _db;
         private readonly IPost _postService;
         private readonly IForum _forumService;
         private readonly IApplicationUser _userService;
         private static UserManager<ApplicationUser> _userManager;
         private readonly IProfile _profileService;
 
-        public PostController(IPost postService, 
+        public PostController(ApplicationDbContext db, IPost postService, 
             IForum forumService, 
             UserManager<ApplicationUser> userManager,
             IApplicationUser userService, IProfile profileService)
@@ -31,6 +32,7 @@ namespace Ballerz.Controllers
             _userManager = userManager;
             _userService = userService;
             _profileService = profileService;
+            _db = db;
         }
 
         public IActionResult Index(int id)
@@ -52,7 +54,9 @@ namespace Ballerz.Controllers
                 Replies = replies,
                 ForumId = post.Forum.Id,
                 ForumName = post.Forum.Title,
-                IsAuthorAdmin = IsAuthorAdmin(post.User)
+                IsAuthorAdmin = IsAuthorAdmin(post.User),
+                Likes = post.Likes
+                
             };
 
             return View(model);
@@ -105,7 +109,8 @@ namespace Ballerz.Controllers
                 Content = model.Content,
                 Created = DateTime.Now,
                 User = user,
-                Forum = forum
+                Forum = forum,
+                Likes = 0
             };
         }
 
@@ -123,6 +128,14 @@ namespace Ballerz.Controllers
                 ReplyContent = reply.Content,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
+        }
+        public IActionResult Like(int id)
+        {
+            Post update = _db.Posts.ToList().Find(u => u.Id == id);
+            update.Likes += 1;
+            _db.SaveChanges();
+            return RedirectToAction("Index", new {id = update.Id});
+           //return RedirectToAction("Index"); 
         }
     }
 }
