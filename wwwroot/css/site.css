@@ -57,6 +57,65 @@ li {
 .color-white {
     color: white;
 }
+.frontPageSplash {
+    background-image: url("/images/backgrounds/frontPage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+.frontPageLearn {
+    font-family: 'Roboto';
+    padding: 12px 0 0 32px;
+    height: 360px;
+}
+.frontPageHeading {
+    font-size: 3.2em;
+    color: #5ee9d6;
+  
+}
+.frontPageSubHeading {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+   
+    width: 500px;
+}
+/*forum topic page*/
+.searchBar {
+    padding: 3px 5px 2px 12px;
+    margin: 8px;
+    background-color: #333;
+    width: 10%;
+    transition: ease .3s;
+    border: none;
+}
+
+.searchBar:focus {
+    color: black;
+    width: 60%;
+    background-color: #fff;
+}
+.homeSearch {
+    width: 100%;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border: 1px solid white;
+    height: 2.3em;
+    font-size: 2.1em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+    transition: ease-in 0.2s;
+}
+.homeSearch:focus {
+    border: none !important;
+    outline: none !important;
+    transition: ease-in 0.2s;
+    color: #03a9f4;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 5px 4px -6px #000;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
