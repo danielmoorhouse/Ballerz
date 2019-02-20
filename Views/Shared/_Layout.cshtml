@@ -23,15 +23,15 @@
     <style>
         .nav {
             color: white !important;
-            background-color: #4f4e4e;
+            background-color: #001333;
             font-size: 16px;
             font-weight: bold;
         }
     </style>
 </head>
-<body style="background-color: #7c7c7c">
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #4f4e4e;">
-        <div class="container">
+<body style="background-color: #353535;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #001333; border-bottom: 2px solid orange;">
+        <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -42,13 +42,14 @@
                 <a class="color-white" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><h3>Ballerz | </h3></a>
             </div>
             
-            <div class="navbar-collapse collapse nav"  style="background-color: #4f4e4e;">
+            <div class="navbar-collapse collapse nav"  style="background-color: #001333;">
                 <ul class="nav navbar-nav">
                               
                        @if(SignInManager.IsSignedIn(User))
                     {
                      <li><a class="nav" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav" asp-area="" asp-controller="Countries" asp-action="Index">Knowledgebase</a></li>
+                     <li><a class="nav" asp-controller="Forum" asp-action="Index">Forums</a></li>
                         <li class="dropdown">
                             <a class="nav" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -61,7 +62,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header nav">Admin</li>
                                     <li><a class="nav" asp-controller="Forum" asp-action="Create">Create Forum</a></li>
-                                    <li><a class="nav" asp-controller="Forum" asp-action="Index">Forums</a></li>
+                                   
                                     <li><a class="nav" asp-controller="Profile" asp-action="Index">View Users</a></li>
                                       <li><a class="nav" asp-area="" asp-controller="Countries" asp-action="Create">Create Countries</a></li>
                     <li><a class="nav" asp-area="" asp-controller="Countries" asp-action="Index">Countries Index</a></li>
@@ -95,7 +96,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content" style="margin-top: 2%;">
+    <div class="container-fluid body-content" style="margin-top: 2%;">
         @RenderBody()
         <hr />
         <footer>

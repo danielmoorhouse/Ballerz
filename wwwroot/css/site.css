@@ -7,11 +7,11 @@ body {
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-/* .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+ .body-content {
+    padding-left: 35px;
+    padding-right: 35px;
    
-} */
+} 
 
 /* Carousel */
 .carousel-caption p {
@@ -58,14 +58,96 @@ li {
     color: white;
 }
 .frontPageSplash {
-    background-image: url("/images/backgrounds/frontPage.png");
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    min-width: 100%;
+    min-height: 30em;
+    width: 100%;
+    height: 30em;
+    }
+    .frontPageSplash::before {
+        background-image: url('/images/backgrounds/frontPage.png');
+        background-size: cover;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+      .frontPageSplash::after {
+        background-color: #001333;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+      }
+.postHeading {
+    color: #fff;
+    font-size: 1.3em;
+    padding: 16px 0 16px 0;
+
+}
+/*post styling*/
+.postTitle, a {
+  
+    font-weight: bold;
+    color: #fff;
+}
+.postSubTitle {
+   
+    font-weight: bold;
+    font-size: 0.8em;
+}
+.postData {
+    display: inline-block;
+}
+.postDate {
+    color: #000;
+    font-size: 0.8em;
+}
+.postLogo {
+    display: inline-block;
+    border-radius: 3px;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #ddd;
+}
+.postAuthorImage {
+    height: 80px;
+    width: 80px;
+    background-size: 100%;
+    margin-top: 10px;
+}
+#postAuthors {
+    color: white !important;
+}
+.postAuthor {
+    color: white !important;
+}
+.postAuthorContainer {
+    padding: 12px;
+    color: #444;
     
-    
+    width: 190px;
+}
+.postHeader {
+    background-color: #212121;
+    padding: 8px 0px 24px 24px;
+    margin-top: 15px;
 }
 .frontPageLearn {
-    font-family: 'Roboto';
+    
     padding: 12px 0 0 32px;
     height: 360px;
 }
@@ -104,7 +186,7 @@ li {
     border: 1px solid white;
     height: 2.3em;
     font-size: 2.1em;
-    font-family: 'Roboto Mono';
+    
     font-weight: bold;
     transition: ease-in 0.2s;
 }

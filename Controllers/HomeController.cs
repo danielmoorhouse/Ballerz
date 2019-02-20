@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Ballerz.Models;
 using Microsoft.AspNetCore.Identity;
 using Ballerz.Data.Models;
-using Ballerz.Services;
+using Ballerz.Services; 
 using Ballerz.Models.Home;
 using Ballerz.Models.Post;
 using Ballerz.Models.Forum;
 using Ballerz.Forums.Models;
 using Ballerz.Models.Profile;
+using Ballerz.Models.Teams;
 
 namespace Ballerz.Controllers
 {
@@ -22,13 +23,15 @@ namespace Ballerz.Controllers
 
           private readonly IPost _postService;
           private readonly IApplicationUser _userService;
+          private readonly ITeam _teamService;
           private readonly ApplicationDbContext _db;
 
-        public HomeController(IPost postService, IApplicationUser userService, ApplicationDbContext db)
+        public HomeController(IPost postService, IApplicationUser userService, ApplicationDbContext db, ITeam teamService)
         {
             _postService = postService;
             _userService = userService;
             _db = db;
+            _teamService = teamService;
         }
 
         public IActionResult Index()
@@ -73,12 +76,21 @@ namespace Ballerz.Controllers
                 RepliesCount = post.Replies.Count(),
                 Forum = GetForumListingForPost(post)
             });
+            var teams =  _teamService.GetAll().Take(10)
+                        .OrderByDescending(r => r.WorldwideFans)
+                        .Select(c => new TeamListingModel
+                        {
+                            TeamName = c.TeamName,
+                            TeamBadgeUrl = c.TeamBadgeUrl,
+                            WorldwideFans = c.WorldwideFans
+                        });
 
             return new HomeIndexModel
             {
                 LatestPosts = posts,
                 SearchQuery = "",
-                Profile = users
+                Profile = users,
+                Teams = teams
                 //UserName = users
                 
             };

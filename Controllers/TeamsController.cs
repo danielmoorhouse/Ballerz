@@ -95,6 +95,10 @@ namespace Ballerz.Web.Controllers
                 Nickname = model.Nickname,
                 TeamBadgeUrl = storePath + model.ImageT1.FileName,
                 YearFounded = model.YearFounded,
+                WorldwideFans = model.WorldwideFans,
+                AverageAttendance = model.AverageAttendance,
+                SocialFollowing = model.SocialFollowing,
+                ClubValue = model.ClubValue,
                 LeagueId = model.LeagueId
  };
             await _teamService.Create(team);
