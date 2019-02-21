@@ -23,6 +23,7 @@ namespace Ballerz.Models.Player
         public DateTime DoB { get; set; }
          public string PlayerImageUrl { get; set; }
         public IFormFile ImageUpload { get; set; }
+        public string CurrentValue { get; set; }
         
         
     }

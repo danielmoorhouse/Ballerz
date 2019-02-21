@@ -18,7 +18,9 @@ namespace Ballerz.KnowledgeBase.Models
         public int PositionId { get; set; }
         public string Position { get; set; }
         public Positions Positions { get; set; }
-        public string PlayerImageUrl {get; set; }
+        public string PlayerImageUrl { get; set; }
+
+        public string CurrentValue { get; set; }
        
     }
 }

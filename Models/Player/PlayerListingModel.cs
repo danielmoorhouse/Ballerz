@@ -20,5 +20,6 @@ namespace Ballerz.Models.Player
          public string FlagUrl { get; set; }
          public int TeamId { get; set; }
          public string TeamName { get; set; }
+         public string CurrentValue { get; set; }
     }
 }

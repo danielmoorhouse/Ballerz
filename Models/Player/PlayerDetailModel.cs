@@ -11,6 +11,7 @@ namespace Ballerz.Models.Player
         public DateTime DoB { get; set; }
         public string BirthPlace { get; set; }
         public string PlayerImageUrl { get; set; }
+        public string CurrentValue { get; set; }
         public Ballerz.KnowledgeBase.Models.Players Players { get; set; }
          public Ballerz.KnowledgeBase.Models.Teams Teams { get; set; }
          public string TeamName { get; set; }
