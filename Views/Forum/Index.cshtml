@@ -1,17 +1,26 @@
 ﻿@model Ballerz.Models.Forum.ForumIndexModel
-
-<div class="container body-content">
+<style>
+    p {
+        color: white;
+    }
+    .spacer {
+        border-top: 2px solid orange;
+    }
+</style>
+<div class="container body-content"  >
     <div class="row sectionHeader">
-        <div class="sectionHeading">Browse Forums</div>
+        <div class="sectionHeading"><img src="/images/backgrounds/coolBall.png" style="width: 20%; opacity: 0.4;  margin-right: 10%; float: right;" /></div>
         <div class="sectionDescription">
-            <p>Welcome to <strong>Ballerz Community</strong>. Posts are categorized into separate forums by leagues, clubs etc.</p>
-            <p>
+            <h3>Welcome to <strong>Ballerz Community</h3></strong>. <br/>
+           <h4> Posts are categorized into separate forums by leagues, clubs etc.</h4>
+            <h5 style="margin-bottom: 25px;">
                 Please read the Forum Guidelines before creating a new post.
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <span>You must be a <a asp-controller="Account" asp-action="Register">registered member</a> to create a new post.</span>
                 }
-            </p>
+            </h5>
+            
         </div>
     </div>
 
@@ -20,7 +29,7 @@
             <tbody>
                 @foreach (var forum in Model.ForumList)
                 {
-                    <tr>
+                    <tr class="spacer">
                         <td>
                             <div class="forumLogo"></div>
                             <div class="forumData">
@@ -37,15 +46,17 @@
                         </td>
                         <td>
                             <div class="forumPostCount">
-                                @forum.NumberOfPosts Posts
+                              <p>@forum.NumberOfPosts Posts</p>  
                             </div>
                             <div class="forumMemberCount">
-                                @forum.NumberOfUsers Users
+                                <p>@forum.NumberOfUsers Users</p>
+                                
                             </div>
                         </td>
                         <td>
                             <div class="forumDescription">
-                                @forum.Description
+                                <p> @forum.Description</p>
+                               
                             </div>
                         </td>
                     </tr>
