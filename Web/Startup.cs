@@ -68,6 +68,7 @@ namespace Ballerz.Web
             services.AddScoped<IStadium, StadiumService>();
             services.AddScoped<ISeason, SeasonService>();
             services.AddScoped<IClubHistory, ClubHistoryService>();
+            services.AddScoped<IPlayerHistory, PlayerHistoryService>();
             services.AddScoped<IPosition, PositionService>();
             services.AddScoped<IPlayer, PlayerService>();
               services.AddScoped<IForum, ForumService>();

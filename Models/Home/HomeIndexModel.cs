@@ -15,6 +15,7 @@ namespace Ballerz.Models.Home
         public string UserName { get; set; }
         public IEnumerable<ProfileListModel> Profile { get; set; }
         public IEnumerable<TeamListingModel> Teams { get; set; }
+        public IEnumerable<TeamListingModel> Attendance { get; set; }
         public string CountryFlag { get; set; }
         public string Location { get; set; }
         public string MemberSince { get; set; }

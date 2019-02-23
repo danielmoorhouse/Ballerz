@@ -76,7 +76,7 @@ namespace Ballerz.Controllers
                 RepliesCount = post.Replies.Count(),
                 Forum = GetForumListingForPost(post)
             });
-            var teams =  _teamService.GetAll().Take(10)
+            var teams =  _teamService.GetAll().Take(6)
                         .OrderByDescending(r => r.WorldwideFans)
                         .Select(c => new TeamListingModel
                         {
@@ -84,13 +84,22 @@ namespace Ballerz.Controllers
                             TeamBadgeUrl = c.TeamBadgeUrl,
                             WorldwideFans = c.WorldwideFans
                         });
+                    var attendance =  _teamService.GetAll().Take(6)
+                        .OrderByDescending(r => r.AverageAttendance)
+                        .Select(c => new TeamListingModel
+                        {
+                            TeamName = c.TeamName,
+                            TeamBadgeUrl = c.TeamBadgeUrl,
+                            AverageAttendance = c.AverageAttendance
+                        });            
 
             return new HomeIndexModel
             {
                 LatestPosts = posts,
                 SearchQuery = "",
                 Profile = users,
-                Teams = teams
+                Teams = teams,
+                Attendance = attendance
                 //UserName = users
                 
             };

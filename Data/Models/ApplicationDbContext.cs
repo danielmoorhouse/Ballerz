@@ -23,6 +23,8 @@ namespace Ballerz.Data.Models
         public DbSet<Teams> Teams { get; set; }
         public DbSet<Seasons> Seasons { get; set; }
         public DbSet<ClubHistory> ClubHistories { get; set; }
+        public DbSet<PlayerHistory> PlayerHistories { get; set; }
+        public DbSet<ManagerHistory> ManagerHistories { get; set; }
         public DbSet<Players> Players { get; set; }
         public DbSet<Positions> Positions { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

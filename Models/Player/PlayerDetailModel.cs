@@ -5,6 +5,7 @@ namespace Ballerz.Models.Player
 {
     public class PlayerDetailModel
     {
+      public int Id { get; set; }
         public string PlayerName { get; set; }
 
         [DataType(DataType.Date)]

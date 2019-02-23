@@ -90,8 +90,8 @@ namespace Ballerz.Web.Controllers
          [HttpPost]
         public async Task<IActionResult> AddLeague(AddLeagueModel model, IFormCollection LeagueImage)
         {
-              var webRoot = _environment.WebRootPath; 
-            string leagueId = Convert.ToString(LeagueImage["Id"]);
+              //var webRoot = _environment.WebRootPath; 
+           //string leagueId = Convert.ToString(LeagueImage["Id"]);
             string storePath = "/images/leagues/";
             var path = Path.Combine(
                      Directory.GetCurrentDirectory(), "wwwroot", "images", "leagues",

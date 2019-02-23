@@ -15,6 +15,7 @@
         
         <h3>Current Club: <strong>@Model.TeamName</strong>&nbsp;&nbsp;<img src="@Model.TeamBadgeUrl" style="width: 75px;" /></h3>
         <h3>Position: <strong>@Model.Position</strong></h3>
+        <a asp-controller="PlayerHistory" asp-action="Index" asp-route-id="@Model.Id">View @Model.PlayerName's Stats</a>
     </div>
     <div class="col-md-4 text-center">
     <img src="@Model.PlayerImageUrl" style="width: 80%; float: left;" />

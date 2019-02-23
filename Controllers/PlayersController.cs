@@ -85,24 +85,7 @@ namespace Ballerz.Controllers
                                          
                                          
                                      }).ToList();
-            // 
-            // var players = _playerService.GetAll()
-            // .Where(p => p.TeamId == id)
-            //  .OrderBy(player => player.PlayerName)
-            //  .Select(c => new PlayerListingModel
-            //  {
-            //      Id = c.Id,
-            //      TeamId = c.TeamId,
-            //      TeamName = teamName,
-            //      PlayerName = c.PlayerName,
-            //      DoB = c.DoB,
-            //      PlayerImageUrl = c.PlayerImageUrl,
-            //      Birthplace = c.Birthplace,
-            //      PositionId = playerPosition.PositionId,
-            //      Position = playerPosition.Position
-                 
-             
-            //  });
+    
 
             var model = new PlayerIndexModel
             {
@@ -168,7 +151,7 @@ namespace Ballerz.Controllers
             var playerTeam = (from Player in _db.Players
                            .Where(p => p.Id == id)
                               join Team in _db.Teams on Player.TeamId equals Team.Id
-                              select new { Player.PlayerName, Player.PlayerImageUrl, Player.Birthplace, Player.DoB,
+                              select new { Player.Id, Player.PlayerName, Player.PlayerImageUrl, Player.Birthplace, Player.DoB,
                                             Team.TeamName, Team.TeamBadgeUrl })
                               .FirstOrDefault();
             var playerCountry = (from player in _db.Players
@@ -181,6 +164,7 @@ namespace Ballerz.Controllers
                                   select new { Position.Position }).FirstOrDefault();
 
             var playerdet = new PlayerDetailModel();
+            playerdet.Id = playerTeam.Id;
             playerdet.PlayerName = playerTeam.PlayerName;
             playerdet.PlayerImageUrl = playerTeam.PlayerImageUrl;
             playerdet.DoB = playerTeam.DoB;

@@ -1,0 +1,84 @@
+@model Ballerz.Models.PlayerHistory.PlayerHistoryIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+ @if (User.IsInRole("Site Admin"))
+             {
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+              }
+<table class="table">
+    <thead>
+        <tr style="background-color: white;">
+            <th>
+                Player Name
+            </th>
+            <th>
+                Team Name
+            </th>
+            <th>
+                Season
+            </th>
+            <th>
+            League Name
+            </th>
+            <th>
+                Red Cards
+            </th>
+            <th>
+                Yellow Cards
+            </th>
+            <th>
+                Goals
+            </th>
+            <th>
+                Position
+            </th>
+            <th>
+                Points
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PlayerHistoryList) {
+        <tr style="background-color: white;">
+         
+            <td>
+                @item.PlayerName
+            </td>
+            <td>
+                @item.TeamName
+            </td>
+            <td>
+                @item.Season
+            </td>
+            <td>
+                @item.LeagueName
+            </td>
+            <td>
+                @item.RedCards
+            </td>
+            <td>
+                @item.YellowCards
+            </td>
+            <td>
+                @item.Goals
+            </td>
+            <td>
+                @item.Position
+            </td>
+            <td>
+                @item.Points
+            </td>
+            <td>
+         
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

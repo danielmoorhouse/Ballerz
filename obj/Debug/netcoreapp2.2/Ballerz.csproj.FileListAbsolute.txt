@@ -100,3 +100,5 @@
 /home/daniel/ASPProjects/Ballerz/Ballerz/obj/Debug/netcoreapp2.2/Razor/Views/Profile/Create.g.cshtml.cs
 /home/daniel/ASPProjects/Ballerz/Ballerz/obj/Debug/netcoreapp2.2/Razor/Views/Players/Delete.g.cshtml.cs
 /home/daniel/ASPProjects/Ballerz/Ballerz/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CountryList.g.cshtml.cs
+/home/daniel/ASPProjects/Ballerz/Ballerz/obj/Debug/netcoreapp2.2/Razor/Views/PlayerHistory/Create.g.cshtml.cs
+/home/daniel/ASPProjects/Ballerz/Ballerz/obj/Debug/netcoreapp2.2/Razor/Views/PlayerHistory/Index.g.cshtml.cs

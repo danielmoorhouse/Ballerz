@@ -3,15 +3,17 @@ using System;
 using Ballerz.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Ballerz.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190222213419_jimmyking")]
+    partial class jimmyking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -365,6 +367,8 @@ namespace Ballerz.Migrations
 
                     b.Property<string>("LeagueName");
 
+                    b.Property<int?>("LeaguesId");
+
                     b.Property<int>("PlayerId");
 
                     b.Property<string>("Points");
@@ -375,11 +379,21 @@ namespace Ballerz.Migrations
 
                     b.Property<string>("Season");
 
-                    b.Property<string>("TeamName");
+                    b.Property<int?>("SeasonsId");
+
+                    b.Property<int>("TeamId");
+
+                    b.Property<int?>("TeamsId");
 
                     b.Property<string>("YellowCards");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LeaguesId");
+
+                    b.HasIndex("SeasonsId");
+
+                    b.HasIndex("TeamsId");
 
                     b.ToTable("PlayerHistories");
                 });
@@ -677,6 +691,21 @@ namespace Ballerz.Migrations
                     b.HasOne("Ballerz.KnowledgeBase.Models.Countries", "Countries")
                         .WithMany()
                         .HasForeignKey("CountriesId");
+
+                    b.HasOne("Ballerz.KnowledgeBase.Models.Teams", "Teams")
+                        .WithMany()
+                        .HasForeignKey("TeamsId");
+                });
+
+            modelBuilder.Entity("Ballerz.KnowledgeBase.Models.PlayerHistory", b =>
+                {
+                    b.HasOne("Ballerz.KnowledgeBase.Models.Leagues", "Leagues")
+                        .WithMany()
+                        .HasForeignKey("LeaguesId");
+
+                    b.HasOne("Ballerz.KnowledgeBase.Models.Seasons", "Seasons")
+                        .WithMany()
+                        .HasForeignKey("SeasonsId");
 
                     b.HasOne("Ballerz.KnowledgeBase.Models.Teams", "Teams")
                         .WithMany()

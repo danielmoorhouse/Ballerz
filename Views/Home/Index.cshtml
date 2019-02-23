@@ -69,6 +69,15 @@
                 <hr class="memb" />
 
                  }
+                  <h4 style="color: white;"><strong>Top Average Attendances</strong></h4>   
+                  <hr/>
+                 @foreach(var attendance in Model.Attendance)
+                 {
+                         <img src="@attendance.TeamBadgeUrl" style="width: 30px;" />
+                    <a asp-controller="Teams" asp-action="Detail" asp-route-id="@attendance.Id"><p style="color: white;"><strong>@attendance.TeamName</strong></p></a>
+                <p style="color: white;">@attendance.AverageAttendance</p>
+                <hr class="memb" /> 
+                 }
                  </div>
                  <div class="col-md-10" style="background-color: #001333; border-left: 1px solid orange; border-right: 1px solid orange;">
                      <h3 style="color: white; background-color: #001333; width: 100%;"><strong>Latest Posts</strong></h3>

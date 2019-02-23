@@ -1,0 +1,64 @@
+@model Ballerz.Models.PlayerHistory.AddPlayerHistoryModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>AddPlayerHistoryModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPlayerHistory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+              <div class="col-md-10">
+                        <label>Player: </label>&nbsp;<select asp-for="PlayerId" asp-items="@Model.PlayerList"></select>
+                    </div>
+                 <div class="col-md-10">
+                        <label>Club: </label>&nbsp;<select asp-for="TeamName" asp-items="@Model.TeamList"></select>
+                    </div>
+                  <div class="col-md-10">
+                        <label>Season </label>&nbsp;<select asp-for="Season" asp-items="@Model.SeasonList"></select>
+                    </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+               <div class="col-md-10">
+                        <label>League Competed In </label>&nbsp;<select asp-for="LeagueName" asp-items="@Model.LeagueList"></select>
+                    </div>
+            <div class="form-group">
+                <label asp-for="RedCards" class="control-label"></label>
+                <input asp-for="RedCards" class="form-control" />
+                <span asp-validation-for="RedCards" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YellowCards" class="control-label"></label>
+                <input asp-for="YellowCards" class="form-control" />
+                <span asp-validation-for="YellowCards" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+                <label asp-for="Goals" class="control-label"></label>
+                <input asp-for="Goals" class="form-control" />
+                <span asp-validation-for="Goals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Points" class="control-label"></label>
+                <input asp-for="Points" class="form-control" />
+                <span asp-validation-for="Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="PlayerHistory" asp-action="Index">Back to List</a>
+</div>
+
