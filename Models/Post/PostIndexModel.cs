@@ -20,6 +20,7 @@ namespace Ballerz.Models.Post
 
         public int ForumId { get; set; }
         public string ForumName { get; set; }
+        public string ForumImageUrl { get; set; }
 
         public IEnumerable<PostReplyModel> Replies { get; set; }
     }

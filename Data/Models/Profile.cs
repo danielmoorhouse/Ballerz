@@ -5,7 +5,7 @@ using Ballerz.KnowledgeBase.Models;
 
 namespace Ballerz.Data.Models
 {
-    public class Profile
+    public class Profile 
     {
         public int Id { get; set; }
 

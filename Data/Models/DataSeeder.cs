@@ -23,12 +23,30 @@ namespace Ballerz.Data.Models
           if (await roleManager.FindByNameAsync(role1) == null) {
             await roleManager.CreateAsync(new ApplicationRole(role1, desc1, DateTime.Now));
         }
-                 if (await userManager.FindByNameAsync("c") == null)
+        if (await userManager.FindByNameAsync("c") == null)
          {
             var user = new ApplicationUser 
             {
                 UserName = "danielmoo",
                 Email = "danmoo@mail.com",
+                MemberSince = DateTime.Now
+               
+            
+            };
+
+            var result = await userManager.CreateAsync(user);
+            if (result.Succeeded) {
+                await userManager.AddPasswordAsync(user, password);
+                await userManager.AddToRoleAsync(user, role1);
+            }
+            adminId1 = user.Id;
+        }
+         if (await userManager.FindByNameAsync("j") == null)
+         {
+            var user = new ApplicationUser 
+            {
+                UserName = "jimmyking",
+                Email = "jking@mail.com",
                 MemberSince = DateTime.Now
                
             

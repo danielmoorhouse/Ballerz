@@ -8,10 +8,10 @@
     }
 </style>
 <div class="container body-content"  >
-    <div class="row sectionHeader">
+    <div class="row sectionHeader" style="background-color: #001333; padding: 3%; margin-bottom: 5%; border-bottom: 4px solid orange">
         <div class="sectionHeading"><img src="/images/backgrounds/coolBall.png" style="width: 20%; opacity: 0.4;  margin-right: 10%; float: right;" /></div>
         <div class="sectionDescription">
-            <h3>Welcome to <strong>Ballerz Community</h3></strong>. <br/>
+            <h3>Welcome to <strong>Ballerz Football Forums</h3></strong>. <br/>
            <h4> Posts are categorized into separate forums by leagues, clubs etc.</h4>
             <h5 style="margin-bottom: 25px;">
                 Please read the Forum Guidelines before creating a new post.
@@ -25,7 +25,7 @@
     </div>
 
     <div class="row" id="forumIndexContent">
-        <table class="table table-hover" id="forumIndexTable">
+        <table class="table" id="forumIndexTable">
             <tbody>
                 @foreach (var forum in Model.ForumList)
                 {

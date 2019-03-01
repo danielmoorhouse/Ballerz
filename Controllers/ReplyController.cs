@@ -7,18 +7,20 @@ using Ballerz.Data.Models;
 using Ballerz.Services;
 using Ballerz.Models.Reply;
 using Ballerz.Forums.Models;
+using System.Linq;
 
 namespace Ballerz.Controllers
 {
     [Authorize]
     public class ReplyController : Controller
     {
+         private readonly ApplicationDbContext _db;
         private readonly IPost _postService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
         private readonly IProfile _profileService;
 
-        public ReplyController(IPost postService, 
+        public ReplyController(ApplicationDbContext db, IPost postService, 
             UserManager<ApplicationUser> userManager,
             IApplicationUser userService, IProfile profileService)
         {
@@ -26,14 +28,14 @@ namespace Ballerz.Controllers
             _userManager = userManager;
             _userService = userService;
             _profileService = profileService;
+            _db = db;
         }
 
         public async Task<IActionResult> Create(int id)
         {
             var post = _postService.GetById(id);
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var profile = _profileService.GetByUserName(User.Identity.Name);
-            
+            var profile = _db.Profile.Where(p => p.UserName == user.UserName).FirstOrDefault();
             var model = new PostReplyModel
             {
                 PostContent = post.Content,
@@ -78,6 +80,7 @@ namespace Ballerz.Controllers
             {
                 Post = post,
                 Content = model.ReplyContent,
+                ReplyAuthorImage = model.AuthorImageUrl,
                 Created = DateTime.Now,
                 User = user
             };

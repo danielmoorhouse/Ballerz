@@ -2,32 +2,38 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">
+        <div class="sectionHeading text-center" style="background-color: #001333; padding: 3%; margin-bottom: 3%; border-bottom: 4px solid orange;">
             <img src="@Model.Forum.ImageUrl" style="width: 170px;" />
             <h3><strong>@Model.Forum.Name Forum</strong></h3>
+                    <h3>Welcome to the @Model.Forum.Name forum. <br/><br/> Swearing is tolerated, personal insults & bullying is NOT!!</h3>
+        
+            
             @if (Context.User.Identity.IsAuthenticated)
             {
-                <span id="headingBtn">
+               
                     <a asp-controller="Post"
                        asp-action="Create"
-                       asp-route-id="@Model.Forum.Id" class="btn btn-newPost">
+                       asp-route-id="@Model.Forum.Id" class="btn btn-primary">
                         Create Post
                     </a>
-                </span>
+                
             }
+    
+        </div>
+        <div class="row text-center" style="margin-bottom: 3%;">
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm">
                     <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
-                    <button type="submit" class="btn btn-forumSearch">
-                        <i class="material-icons">search</i>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="material-icons">search forum</i>
                     </button>
                 </div>
                 <input asp-for="Forum.Id" name="id" type="hidden" />
             </form>
-        </div>
+            </div>
         <div class="sectionDescription">
             <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl)"></div>
-            <p>Welcome to the @Model.Forum.Name forum. Please keep posts friendly and on-topic.</p>
+            
             @if (!User.Identity.IsAuthenticated)
             {
                 <p>
@@ -40,44 +46,44 @@
             }
         </div>
     </div>
-   <div class="row">
+    <div class="container-fluid" style="background-color: #011333;">
+   <div class="row" style="border-bottom: 3px solid orange;">
                             <div class="col-md-1">
                             <h5></h5>
                             </div>
                             <div class="col-md-2 text-center">
                              <h5><strong>Author</strong></h5>
                             </div>
-                            <div class="col-md-3 text-center">
+                            <div class="col-md-6 text-center">
                              <h5><strong>Post Topic</strong></h5>
                             </div>
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-3 text-center">
                             <h5><strong>Replies</strong></h5>
                             </div>
-                              <div class="col-md-4">
-                                
-                            </div>
+                           
                         </div>
         @if (Model.Posts.Any())
         {
             
                     @foreach(var post in Model.Posts)
                     {
-                        <div class="row">
-                            <div class="col-md-1">
+                        <div class="row" style="margin-top: 15px; border-bottom: 1px solid orange;">
+                            <div class="col-md-1" style="padding: 1%;">
                             <img class="img img-circle" src="@post.AuthorImageUrl" style="width: 50px; float: right;" />
                             </div>
                             <div class="col-md-2 text-center">
-                             @post.AuthorName (@post.AuthorRating)
+                            <p class="" style="padding-top: 15px;">@post.AuthorName (@post.AuthorRating)</p> 
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                
+                                  <h5 id="Title" style="padding-top: 10px;">&nbsp;@post.Title </h5> 
+                                </a>
                             </div>
                             <div class="col-md-3 text-center">
-                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
+                               <p class="" style="padding-top: 15px;">@post.RepliesCount</p> 
                             </div>
-                            <div class="col-md-4 text-center">
-                                @post.RepliesCount
-                            </div>
-                              <div class="col-md-4">
-                                
-                            </div>
+                         
                         </div>
                        
                             
@@ -101,7 +107,7 @@
         }
     </div>
 </div>
-
+</div>
 @section Scripts{ 
     <script>
         function clearThis(target) {

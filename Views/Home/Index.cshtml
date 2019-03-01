@@ -5,26 +5,26 @@
     }
 </style>
 <div class="container-fluid body-content">
-    <div class="row frontPageSplash" style="margin-bottom: 20px !important;">
-        <div class="col-md-6 frontPageLearn">
+    <div class="row frontPageSplash " style="margin-bottom: 20px !important;">
+        <div class="col-md-6 frontPageLearn" >
             <div class="frontPageHeading"></div>
              
-             <h2 style="margin-top: 26%;">Ballerz</h2>
-            <p class="frontPageSubHeading">Football Forums & Knowledgebase</p>
+             <h2 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1.5s" style="margin-top: 26%;">Ballerz</h2>
+            <p class="frontPageSubHeading wow fadeIn" data-wow-duration="2s" data-wow-delay="2s">Football Forums & Knowledgebase</p>
             <div>
-                <form asp-controller="Search" asp-action="Search" method="post">
+                <form class="wow fadeIn" data-wow-duration="2s" data-wow-delay="2.5s" asp-controller="Search" asp-action="Search" method="post">
                     <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..."/>
                 </form>
             </div>
         </div>
-        <div class="col-md-6">
-            <img src="/images/backgrounds/coolBall.png" style="width: 40%; opacity: 0.4; margin-top: 32%; margin-left: 35%;" />
+        <div class="col-md-6 wow slideInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+            <img src="/images/backgrounds/coolBall.png" class="" style="width: 40%; opacity: 0.4; margin-top: 32%; margin-left: 35%;" />
         </div>
     </div>
   
         
         
-          <div class="col-md-10">
+          <div class="col-md-10 ">
                  <div class="row" style=" background-color: #001333; border-right: 2px solid orange; border-left: 2px solid orange;
                   padding-bottom: 10px; border-bottom: 1px solid orange; border-top: 1px solid orange;">
                         <!-- <div class="col-md-1 text-center col-md-offset-1">
@@ -56,9 +56,11 @@
                         </div> -->
 
                     </div> 
+          
                     
                  <div class="row">
-                 <div class="col-md-2 text-center" style="border-left: 1px solid orange; background-color: #001333; border-top: 1px solid orange; border-right: 1px solid orange;">
+                 <div class="col-md-2 text-center wow fadeIn"  data-wow-duration="2s" data-wow-delay="2.5s"
+                        style="border-left: 1px solid orange; background-color: #001333; border-top: 1px solid orange; border-right: 1px solid orange;">
                   <h4 style="color: white;"><strong>Worldwide Fans</strong></h4>   
                   <hr/>
                  @foreach(var team in Model.Teams)
@@ -79,7 +81,7 @@
                 <hr class="memb" /> 
                  }
                  </div>
-                 <div class="col-md-10" style="background-color: #001333; border-left: 1px solid orange; border-right: 1px solid orange;">
+                 <div class="col-md-10  wow fadeIn"  data-wow-duration="2s" data-wow-delay="2.8s" style="background-color: #001333; border-left: 1px solid orange; border-right: 1px solid orange;">
                      <h3 style="color: white; background-color: #001333; width: 100%;"><strong>Latest Posts</strong></h3>
                 @foreach(var post in Model.LatestPosts)
                 {
@@ -129,7 +131,7 @@
                  </div>
                 </div>
                 
-                <div class="col-md-2" style="border-left: 1px solid grey; background-color: #001333; border-top: 1px solid orange; border-right: 1px solid orange;">
+                <div class="col-md-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="3.2s" style="border-left: 1px solid grey; background-color: #001333; border-top: 1px solid orange; border-right: 1px solid orange;">
                     <h4 style="color: white;"><strong>New Members</strong></h4>
                     <hr/>
                 @foreach(var user in Model.Profile)

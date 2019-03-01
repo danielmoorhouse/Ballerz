@@ -54,6 +54,7 @@ namespace Ballerz.Controllers
                 Replies = replies,
                 ForumId = post.Forum.Id,
                 ForumName = post.Forum.Title,
+                ForumImageUrl = post.Forum.ImageUrl,
                 IsAuthorAdmin = IsAuthorAdmin(post.User),
                 Likes = post.Likes
                 
@@ -110,32 +111,32 @@ namespace Ballerz.Controllers
                 Created = DateTime.Now,
                 User = user,
                 Forum = forum,
-                Likes = 0
+               // Likes = 0
             };
         }
 
         private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
         {
-            var image = _profileService.GetByUserName(User.Identity.Name);
+            
             return replies.Select(reply => new PostReplyModel
             {
                 Id = reply.Id,
                 AuthorName = reply.User.UserName,
                 AuthorId = reply.User.Id,
-                AuthorImageUrl = image.ProfileImageUrl,
+                AuthorImageUrl = reply.ReplyAuthorImage,
                 AuthorRating = reply.User.Rating,
                 Created = reply.Created,
                 ReplyContent = reply.Content,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
         }
-        public IActionResult Like(int id)
-        {
-            Post update = _db.Posts.ToList().Find(u => u.Id == id);
-            update.Likes += 1;
-            _db.SaveChanges();
-            return RedirectToAction("Index", new {id = update.Id});
-           //return RedirectToAction("Index"); 
-        }
+        // public IActionResult Like(int id)
+        // {
+        //     Post update = _db.Posts.ToList().Find(u => u.Id == id);
+        //     update.Likes += 1;
+        //     _db.SaveChanges();
+        //     return RedirectToAction("Index", new {id = update.Id});
+        //    //return RedirectToAction("Index"); 
+        // }
     }
 }

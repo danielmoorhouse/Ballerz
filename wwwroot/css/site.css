@@ -25,6 +25,33 @@ h1, h2, h3, h4, h5 {
 }
 p {
     font-family: 'Lato', sans-serif;
+    color: white;
+}
+.btn-primary {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    background-color: orange;
+    color: #011333;
+    border: 1px solid #011333;
+}
+.btn-back:hover { 
+    background-color: red;
+    color: #011333;
+    font-weight: bold;
+}
+.btn-back { 
+    background-color: #011333;
+    color: red;
+    font-weight: bold;
+    transition: 0.7s;
+}
+.btn-primary:hover {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    background-color: #011333;
+    color: orange;
+    border: 1px solid orange;
+    transition: 0.5s;
 }
 #Title1 {
   color: white;
@@ -56,6 +83,10 @@ li {
 }
 .color-white {
     color: white;
+}
+#forumIndexTable {
+    background-color: #011333;
+    border-bottom: 2px solid orange;
 }
 .frontPageSplash {
     background-repeat: no-repeat;
@@ -167,9 +198,9 @@ li {
 /*forum topic page*/
 .searchBar {
     padding: 3px 5px 2px 12px;
-    margin: 8px;
+    margin: 0px;
     background-color: #333;
-    width: 10%;
+    width: 30%;
     transition: ease .3s;
     border: none;
 }
