@@ -1,0 +1,23 @@
+@model IEnumerable<Ballerz.Data.Models.Notification>
+
+    <div class="inner-wrapper">
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="post tight">
+                <div class="post__top">
+                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@item.FromUser.UserName">@item.FromUser.UserName</a>
+                  
+                    <time title="@item.Timestamp.ToString("D")">@item.Timestamp.ToShortDateString()</time>
+
+                    <p class="message">@item.Message</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nothing to see here.</p>
+    }
+</div>

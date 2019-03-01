@@ -7,6 +7,7 @@ using System.Linq;
 using Ballerz.Data.Models;
 using Ballerz.Data;
 using Ballerz.Forums.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ballerz.Services.Implementations
 {
@@ -58,11 +59,21 @@ namespace Ballerz.Services.Implementations
             await _db.SaveChangesAsync();
         }
 
-    
+
 
         IEnumerable<Data.Models.ApplicationUser> IApplicationUser.GetAll()
         {
             return _db.ApplicationUsers.ToList();
+        }
+
+        public async Task<ApplicationUser> GetByUsername(string userName)
+        {
+            return await _db.ApplicationUsers.FirstOrDefaultAsync(u => u.UserName == userName);
+        }
+
+        public async Task<ApplicationUser> GetByUsernameOrId(string userName)
+        {
+            return await _db.ApplicationUsers.FirstOrDefaultAsync(u => u.UserName == userName || u.Id == userName);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Ballerz.Data.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostReply> PostReplies { get; set; }
         public DbSet<Profile> Profile { get; set ;}
+        public DbSet<Notification> Notifications { get; set ;}
 
 
 
