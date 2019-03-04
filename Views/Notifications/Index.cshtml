@@ -7,7 +7,10 @@
         {
             <div class="post tight">
                 <div class="post__top">
-                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@item.FromUser.UserName">@item.FromUser.UserName</a>
+                    <a href="@Url.Action("Detail", "Profile", new { @id = item.FromUser.Id })"></a>
+                     <a href="@Url.Action("Detail", "Profile", new { @id = item.FromUser.Id})" class="post__user">
+                        @item.FromUser.UserName
+                    </a>
                   
                     <time title="@item.Timestamp.ToString("D")">@item.Timestamp.ToShortDateString()</time>
 

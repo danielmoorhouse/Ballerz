@@ -6,5 +6,6 @@ namespace Ballerz.Models.ClubHistory
     public class ClubHistoryIndexModel
     {
         public IEnumerable<ClubHistoryListingModel> HistoryList { get; set; }
+        public string TeamName { get; set; }
     }
 }

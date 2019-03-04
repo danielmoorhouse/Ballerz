@@ -76,6 +76,7 @@ namespace Ballerz.Web
             services.AddScoped<IUpload, UploadService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
             services.AddScoped<IProfile, ProfileService>();
+            services.AddScoped<INotification, NotificationService>();
 
             services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(

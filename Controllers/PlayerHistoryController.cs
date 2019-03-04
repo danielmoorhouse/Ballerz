@@ -12,27 +12,21 @@ namespace Ballerz.Controllers
     public class PlayerHistoryController : Controller
     {
         private readonly IPlayerHistory _playerHistoryService;
+        private readonly IPlayer _playerService;
 
         private readonly ApplicationDbContext _db;
 
-        public PlayerHistoryController(IPlayerHistory playerHistoryService, ISeason seasonService, ApplicationDbContext db)
+        public PlayerHistoryController(IPlayerHistory playerHistoryService, ISeason seasonService, ApplicationDbContext db, IPlayer playerService)
         {
             _playerHistoryService = playerHistoryService;
             _db = db;
+            _playerService = playerService;
         }
 
         public IActionResult Index(int id)
         {
-            // var history = _playerHistoryService.GetAll()
-            //                  .Where(h => h.Id == id)
-            //                   .OrderBy(h => h.Season)
-                // var playerPosition = (from player in _db.Players
-                //                      .Where(p => p.TeamId == id)
-                //                      .OrderBy(p => p.Position)
-                //                     join Position in _db.Positions on player.PositionId equals Position.PositionId
-                //                     join c in _db.Countries on player.CountryId equals c.Id
-                //                     select new PlayerListingModel 
-                //                     {
+            ViewBag.PlayerName = _playerService.GetAll()
+                                .Where(p => p.Id == id).FirstOrDefault().PlayerName;
             var history = (from playerHistory in _db.PlayerHistories
                         .Where(h => h.PlayerId == id)
                         .OrderBy(s => s.Season)

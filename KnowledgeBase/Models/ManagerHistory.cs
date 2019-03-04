@@ -5,6 +5,7 @@ namespace Ballerz.KnowledgeBase.Models
           public int Id { get; set; }
         public int ManagerId { get; set; }
          public int TeamId { get; set; }
+         public string TeamName { get; set; }
         public Teams Teams { get; set; }
         public string Season { get; set; }
         public Seasons Seasons { get; set; }

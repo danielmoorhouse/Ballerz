@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Ballerz.Data.Models;
 using Ballerz.Services;
@@ -23,9 +24,9 @@ namespace Ballerz.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string userId)
         {
-            var notifications = await _notificationService.GetNotifications(User.Identity.Name);
+            var notifications = _db.Notifications.Where(n => n.ToUser.Id == userId).ToList();
 
             await _notificationService.MarkNotificationsViewed(User.Identity.Name);
 

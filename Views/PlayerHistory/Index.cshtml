@@ -11,12 +11,12 @@
                     <a asp-action="Create">Create New</a>
                 </p>
               }
+           <h1>Player History - @ViewBag.PlayerName</h1>
+              
 <table class="table">
     <thead>
         <tr style="background-color: white;">
-            <th>
-                Player Name
-            </th>
+          
             <th>
                 Team Name
             </th>
@@ -48,9 +48,7 @@
 @foreach (var item in Model.PlayerHistoryList) {
         <tr style="background-color: white;">
          
-            <td>
-                @item.PlayerName
-            </td>
+            
             <td>
                 @item.TeamName
             </td>

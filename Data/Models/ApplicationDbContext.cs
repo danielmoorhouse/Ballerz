@@ -33,6 +33,7 @@ namespace Ballerz.Data.Models
         public DbSet<PostReply> PostReplies { get; set; }
         public DbSet<Profile> Profile { get; set ;}
         public DbSet<Notification> Notifications { get; set ;}
+        public DbSet<Like> Likes { get; set; }
 
 
 

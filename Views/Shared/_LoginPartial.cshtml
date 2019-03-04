@@ -1,13 +1,17 @@
 @using Microsoft.AspNetCore.Identity
 
+
 @inject SignInManager<Ballerz.Data.Models.ApplicationUser> SignInManager
 @inject UserManager<Ballerz.Data.Models.ApplicationUser> UserManager
 
 
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) && Model !=null)
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
+             <li>
+
+            </li>
             <li>
                 <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><p style="color: white;">Hello @UserManager.GetUserName(User)!</p></a>
             </li>

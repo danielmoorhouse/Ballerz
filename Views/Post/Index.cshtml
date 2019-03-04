@@ -37,8 +37,8 @@
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
                 </a>
-                @Model.Likes.ToString() Likes <br/>
-                <a asp-controller="Post" asp-action="Like" asp-route-id="@Model.Id">Like</a>
+                
+            
             </span>
         </div>
     
@@ -77,12 +77,13 @@
          @if(Model.AuthorId != reply.AuthorId)
             {
             <div class="row replyContent" style="margin-top: 60px;">
-                <div class="col-md-3 replyAuthorContainer col-md-offset-2" >
-                   <img class="img img-circle" src="@reply.AuthorImageUrl" style="width: 60px;"/>
+                <div class="col-md-2  replyAuthorContainer col-md-offset-2" style="background-color: orange;" >
+                    <div class="img img-circle" style="width: 60px; background-color: grey;"></div>
+                   <!-- <img class="img img-circle" src="@reply.AuthorImageUrl" style="width: 60px;"/> -->  <br> 
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         @reply.AuthorName
                     </a>
-                   
+                   <br>
                     @if (reply.IsAuthorAdmin)
                     {
                         <div class="isAdmin smaller">Admin</div>
