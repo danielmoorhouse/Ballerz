@@ -3,11 +3,21 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
+    .blue {
+        background-color: #011333;
+        padding-top: 1%;
+       
+    }
+    .trans {
+        background-color: black !important;
+    }
+</style>
 
 <h1><strong>Ballerz | Ballerz</strong></h1>
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-6">
+<div class="row" style="padding-left: 5%;">
+    
+    <div class="col-md-5 blue col-md-offset-1" style="height: 30em;" >
         
         <h1><strong>@Model.PlayerName</strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="@Model.FlagUrl" style="width: 75px;" /></h1>
         <h3>Born: <strong>@Model.BirthPlace</strong></h3>
@@ -17,15 +27,11 @@
         <h3>Position: <strong>@Model.Position</strong></h3>
         <a asp-controller="PlayerHistory" asp-action="Index" asp-route-id="@Model.Id">View @Model.PlayerName's Stats</a>
     </div>
-    <div class="col-md-4 text-center">
-    <img src="@Model.PlayerImageUrl" style="width: 80%; float: left;" />
+    <div class="col-md-3 text-center blue" style="height: 30em;"">
+    <img src="@Model.PlayerImageUrl" style="width: 100%;" />
     
     </div>
+    <div class="col-md-1 trans"></div>
 </div>
 
-
-
-
-
-  
 </div>

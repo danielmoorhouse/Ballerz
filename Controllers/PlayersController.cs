@@ -5,6 +5,7 @@ using Ballerz.Data;
 using Ballerz.Data.Models;
 using Ballerz.KnowledgeBase.Models;
 using Ballerz.Models.Player;
+using Ballerz.Models.PlayerHistory;
 using Ballerz.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -162,7 +163,8 @@ namespace Ballerz.Controllers
                            .Where(p => p.Id == id)
                                   join Position in _db.Positions on player.PositionId equals Position.PositionId
                                   select new { Position.Position }).FirstOrDefault();
-
+          
+            
             var playerdet = new PlayerDetailModel();
             playerdet.Id = playerTeam.Id;
             playerdet.PlayerName = playerTeam.PlayerName;
@@ -174,7 +176,8 @@ namespace Ballerz.Controllers
             playerdet.FlagUrl = playerCountry.FlagUrl;
             playerdet.Position = playerPosition.Position;
 
-
+        
+            
 
             return View(playerdet);
         }

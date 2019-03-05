@@ -2,13 +2,13 @@
 
 <a asp-controller="Leagues" asp-action="Create">Add Manager</a>
 <div class="container-fluid" style="background-color: #4f4e4e;">
-<div class="row">
+<div class="row" style="background-color: #011333;">
 @foreach(var manager in Model.ManagersList)
 {
-    <div class="col-md-3 text-center" style="margin-bottom: 3em; border-right: 2px solid white;">
-  <img src="@manager.ManagerImageUrl" class="flagImg" style="width: 90%; padding-top: 10px;"/>
+    <div class="col-md-3 text-center" style="margin-bottom: 3em;">
+  <img src="@manager.ManagerImageUrl" class="flagImg" style="width: 80%; padding-top: 10px;"/>
   <h4 style="padding-bottom: 5px;"><strong>@manager.Name</strong>&nbsp;&nbsp;</h4>
- <img src="@manager.CountryFlagUrl" class="flagImg" style="width: 30px;"/>
+ <img src="@manager.CountryFlagUrl" class="flagImg" style="width: 45px;"/>
   
   <h4 style=""><strong>@manager.TeamName</strong></h4>
   <img src="@manager.TeamBadge" class="flagImg" style="width: 20%; padding-top: 5px;"/><br/>

@@ -3,43 +3,55 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    th, td {
+        text-align: center;
+    }
+</style>
 
-<h2>Index</h2>
  @if (User.IsInRole("Site Admin"))
              {
                 <p>
                     <a asp-action="Create">Create New</a>
                 </p>
               }
-           <h1>Player History - @ViewBag.PlayerName</h1>
+              <div class="row">
+                  <div class="col-md-4 col-md-offset-4 text-center" style="background-color: #011333; margin-bottom: 3%;">
+                        <h1>@ViewBag.PlayerName<span style="color: orange;"> : Statistics</span></h1>
+                  </div>
+              </div>
+           
               
 <table class="table">
     <thead>
-        <tr style="background-color: white;">
+        <tr style="background-color: #011333;">
           
             <th>
-                Team Name
+              <p>Playing For</p>  
             </th>
             <th>
-                Season
+               <p>Season</p> 
             </th>
             <th>
-            League Name
+            <p>League Name</p>
+            </th>
+             <th>
+            <p>Games Played</p>
             </th>
             <th>
-                Red Cards
+                 <span style="width: 50px; font-size: 25px; background-color: red; color: red;">R</span>
             </th>
             <th>
-                Yellow Cards
+                <span style="width: 50px; font-size: 25px; background-color: yellow; color: yellow;">Y</span>
             </th>
             <th>
-                Goals
+               <img src="/images/backgrounds/football.png" class="" style="width: 30px;" />
             </th>
             <th>
-                Position
+               <p>Position</p> 
             </th>
             <th>
-                Points
+               <p>Points</p>
             </th>
             <th></th>
         </tr>
@@ -50,28 +62,31 @@
          
             
             <td>
-                @item.TeamName
+               <strong>@item.TeamName</strong> 
             </td>
             <td>
-                @item.Season
+               <strong> @item.Season</strong>
             </td>
             <td>
-                @item.LeagueName
+               <strong> @item.LeagueName </strong>
+            </td>
+             <td>
+               <strong>  </strong>
             </td>
             <td>
-                @item.RedCards
+               <strong>@item.RedCards</strong> 
             </td>
             <td>
-                @item.YellowCards
+               <strong> @item.YellowCards</strong>
             </td>
             <td>
-                @item.Goals
+               <strong>@item.Goals</strong> 
             </td>
             <td>
-                @item.Position
+               <strong> @item.Position</strong>
             </td>
             <td>
-                @item.Points
+               <strong>@item.Points</strong> 
             </td>
             <td>
          

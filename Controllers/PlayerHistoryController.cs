@@ -13,20 +13,23 @@ namespace Ballerz.Controllers
     {
         private readonly IPlayerHistory _playerHistoryService;
         private readonly IPlayer _playerService;
+        private readonly ITeam _teamService;
 
         private readonly ApplicationDbContext _db;
 
-        public PlayerHistoryController(IPlayerHistory playerHistoryService, ISeason seasonService, ApplicationDbContext db, IPlayer playerService)
+        public PlayerHistoryController(IPlayerHistory playerHistoryService, ISeason seasonService, ApplicationDbContext db, IPlayer playerService, ITeam teamService)
         {
             _playerHistoryService = playerHistoryService;
             _db = db;
             _playerService = playerService;
+            _teamService = teamService;
         }
 
         public IActionResult Index(int id)
         {
             ViewBag.PlayerName = _playerService.GetAll()
                                 .Where(p => p.Id == id).FirstOrDefault().PlayerName;
+           
             var history = (from playerHistory in _db.PlayerHistories
                         .Where(h => h.PlayerId == id)
                         .OrderBy(s => s.Season)
@@ -48,6 +51,8 @@ namespace Ballerz.Controllers
             {
                 PlayerHistoryList = history
             };
+            //  ViewBag.CurrentTeam = _teamService.GetAll()
+            //                     .Where(t => t.Id == ).FirstOrDefault().TeamBadgeUrl;
             return View(model);
 
         }

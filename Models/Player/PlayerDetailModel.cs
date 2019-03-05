@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Ballerz.KnowledgeBase.Models;
 
 namespace Ballerz.Models.Player
 {
@@ -20,6 +22,7 @@ namespace Ballerz.Models.Player
          public string CountryName { get; set; }
          public string FlagUrl { get; set; }
          public string Position { get; set; }
+         public IEnumerable<Ballerz.KnowledgeBase.Models.PlayerHistory> PlayerHistory { get; set; }
        //  public Ballerz.KnowledgeBase.Models.Positions Positions { get; set; }
          // public Ballerz.KnowledgeBase.Models.Countries Countries { get; set; }
     }
